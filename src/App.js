@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import logo from './logo.svg';
 import './App.css';
-import { NavigationBar } from './NavigationBar';
-import { PokemonDetail } from './PokemonDetail';
+import { NavigationBar } from './components/NavigationBar';
+import { PokemonDetail } from './components/PokemonDetail';
+import PokemonList from './components/PokemonList/PokemonList';
 
 class App extends Component {
   render() {
@@ -12,6 +13,7 @@ class App extends Component {
         <NavigationBar />
         <Row>
           <Col md={{ size: 6, offset: 3 }}>
+            <PokemonList />
             <PokemonDetail
               pokemonId={1}
               pokemonName={'Bulbasaur'}
