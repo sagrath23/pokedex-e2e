@@ -26,7 +26,6 @@ const PokemonList = ({ currentPokemonList, loadListAction }) => {
             </Button>
         </ButtonGroup>
     </Col>);
-
 }
 
 export default PokemonList;
