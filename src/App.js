@@ -17,7 +17,7 @@ class App extends Component {
           <Router>
             <div>
               <Route exact path="/" component={PokemonListContainer} />
-              <Route path="/detail" component={PokemonDetail} />
+              <Route path="/detail/:pokemonName" component={PokemonDetail} />
             </div>
           </Router> 
           </Col>

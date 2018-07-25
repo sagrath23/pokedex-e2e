@@ -1,11 +1,17 @@
 import React from 'react';
 import { Col, Button, ButtonGroup, ListGroup, ListGroupItem } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 const PokemonList = ({ currentPokemonList, loadListAction }) => {
     return (
     <Col>
         <ListGroup>
-            {currentPokemonList.results.map((pokemon, index) => (<ListGroupItem key={index}>{pokemon.name}</ListGroupItem>))}
+            {currentPokemonList.results.map((pokemon, index) => (
+            <ListGroupItem key={index}>
+                <Link to={`/detail/${pokemon.name}`}>
+                    {pokemon.name}
+                </Link>
+            </ListGroupItem>))}
         </ListGroup>
         <ButtonGroup>
             <Button
