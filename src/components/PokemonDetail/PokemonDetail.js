@@ -46,7 +46,7 @@ class PokemonDetail extends Component {
 
         return(
             <Card>
-                <CardImg top width="100%" src={detailedPokemon.sprite} alt="Pokemon Sprite" />
+                <CardImg top width="100%" src={detailedPokemon.sprites.front_default} alt="Pokemon Sprite" />
                 <CardBody>
                     <CardTitle>{detailedPokemon.name}</CardTitle>
                     <CardSubtitle>Pokemon ID: {detailedPokemon.id}</CardSubtitle>

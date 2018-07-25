@@ -18,7 +18,9 @@ export const initialState = {
                 }
             }
         ],
-        sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png'
+        sprites: {
+            front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png'
+        }
     },
     currentPokemonList: {
         "count": 949,

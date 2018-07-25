@@ -1,6 +1,6 @@
 import request from 'superagent';
 
-const baseUrl = 'http://pokeapi.co/api/v2/';
+const baseUrl = 'https://pokeapi.co/api/v2/';
 
 export const listPokemons = async (listUrl) => {
     return await request.get(listUrl);
