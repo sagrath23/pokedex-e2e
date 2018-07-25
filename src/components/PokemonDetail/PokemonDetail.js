@@ -42,7 +42,7 @@ class PokemonDetail extends Component {
     }
 
     render(){
-        const {detailedPokemon} = this.props;
+        const { detailedPokemon } = this.props;
 
         return(
             <Card>
