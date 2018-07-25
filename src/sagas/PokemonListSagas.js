@@ -1,9 +1,11 @@
 import { delay } from 'redux-saga'
-import { put, takeEvery } from 'redux-saga/effects'
+import { put, takeEvery, call } from 'redux-saga/effects';
+import { listPokemons } from '../services';
 import actionTypes from '../constants';
 
-export function* loadNewPokemonList() {
-    yield console.log('fuck yeah!!!');
+export function* loadNewPokemonList(action) {
+    const newPokemonList = yield call(listPokemons, action.payload.urltoLoad);
+    yield console.log(newPokemonList, 'ohhhhhhhhh yeah!!!');
     yield delay(1000)
     yield put({ type: actionTypes.listActiontype })
 }

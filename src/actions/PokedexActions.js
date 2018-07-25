@@ -1,7 +1,10 @@
 import actionTypes from '../constants';
 
-export const listAction = () => ({
-    type: actionTypes.listActiontype
+export const listAction = (newPokemonList) => ({
+    type: actionTypes.listActiontype,
+    payload: {
+        newPokemonList
+    }
 });
 
 export const detailAction = () => ({

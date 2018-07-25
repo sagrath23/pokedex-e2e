@@ -1,8 +1,7 @@
 const baseUrl = 'http://pokeapi.co/api/v2/';
 
-export const listPokemons = async (limit, offset) => {
-    const listPokemonsEndpoint = `${baseUrl}pokemon?limit=${limit}&offset=${offset}`;
-    return await fetch(listPokemonsEndpoint);
+export const listPokemons = async (listUrl) => {
+    return await fetch(listUrl);
 };
 
 export const getPokemon = async (pokemonName) => {
