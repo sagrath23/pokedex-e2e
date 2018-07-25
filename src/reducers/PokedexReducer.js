@@ -7,7 +7,6 @@ const pokedexReducer = (currentState = initialState, action) => {
             return Object.assign({}, currentState, {currentPokemonList: action.payload.newPokemonList})
         }break;
         default: {
-            console.log(currentState, 'in pokedex reducer!!!');
             return currentState;
         }break;
     }
