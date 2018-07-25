@@ -9,9 +9,9 @@ const PokemonList = ({ currentPokemonList, loadListAction }) => {
         </ListGroup>
         <ButtonGroup>
             <Button
-                disabled={!currentPokemonList.prev}
+                disabled={!currentPokemonList.previous}
                 onClick={() => {
-                    currentPokemonList.prev ? loadListAction(currentPokemonList.prev) : null
+                    currentPokemonList.previous ? loadListAction(currentPokemonList.previous) : null
                 }}
             >
                 Previous
