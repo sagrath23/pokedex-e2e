@@ -1,31 +1,19 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import { Col, Button, ButtonGroup, ListGroup, ListGroupItem } from 'reactstrap';
-export default class PokemonList extends Component {
-    constructor() {
-        super();
 
-        this.state = {
-            previousPage: '',
-            nextPage: ''
-        }
-    }
+const PokemonList = ({ currentPokemonList }) => {
+    console.log(currentPokemonList, 'List!!!!');
+    return (
+    <Col>
+        <ListGroup>
+{currentPokemonList.results.map((pokemon, index) => (<ListGroupItem key={index}>{pokemon.name}</ListGroupItem>))}
+        </ListGroup>
+        <ButtonGroup>
+            <Button>Prev</Button>
+            <Button>Next</Button>
+        </ButtonGroup>
+    </Col>);
 
-    render() {
-        return (
-            <Col>
-                <ListGroup>
-                    <ListGroupItem>Cras justo odio</ListGroupItem>
-                    <ListGroupItem>Dapibus ac facilisis in</ListGroupItem>
-                    <ListGroupItem>Morbi leo risus</ListGroupItem>
-                    <ListGroupItem>Porta ac consectetur ac</ListGroupItem>
-                    <ListGroupItem>Vestibulum at eros</ListGroupItem>
-                </ListGroup>
-                <ButtonGroup>
-                    <Button>Prev</Button>
-                    <Button>Next</Button>
-                </ButtonGroup>
-            </Col>
-        );
-    }
 }
+
+export default PokemonList;

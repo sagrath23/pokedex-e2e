@@ -1,7 +1,9 @@
 import { connect } from 'react-redux';
 import PokemonList from './PokemonList';
 
-const mapStateToProps = (fullState) => ({});
+const mapStateToProps = ({ pokedexReducer }) => ({
+    currentPokemonList: pokedexReducer.currentPokemonList
+});
 
 const mapDispatchToProps = (dispatch) => ({});
 
