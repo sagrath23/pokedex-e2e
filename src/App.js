@@ -5,7 +5,7 @@ import logo from './logo.svg';
 import './App.css';
 import { NavigationBar } from './components/NavigationBar';
 import { PokemonDetail } from './components/PokemonDetail';
-import PokemonList from './components/PokemonList/PokemonList';
+import { PokemonListContainer } from './components/PokemonList';
 
 class App extends Component {
   render() {
@@ -16,7 +16,7 @@ class App extends Component {
           <Col md={{ size: 6, offset: 3 }}>
           <Router>
             <div>
-              <Route exact path="/" component={PokemonList} />
+              <Route exact path="/" component={PokemonListContainer} />
               <Route path="/detail" component={PokemonDetail} />
             </div>
           </Router> 

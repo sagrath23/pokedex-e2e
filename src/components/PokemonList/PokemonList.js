@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Col, Button, ButtonGroup, ListGroup, ListGroupItem } from 'reactstrap';
-
 export default class PokemonList extends Component {
     constructor() {
         super();
