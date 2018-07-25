@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 import { NavigationBar } from './components/NavigationBar';
-import { PokemonDetail } from './components/PokemonDetail';
+import { PokemonDetailContainer } from './components/PokemonDetail';
 import { PokemonListContainer } from './components/PokemonList';
 
 class App extends Component {
@@ -17,7 +17,7 @@ class App extends Component {
           <Router>
             <div>
               <Route exact path="/" component={PokemonListContainer} />
-              <Route path="/detail/:pokemonName" component={PokemonDetail} />
+              <Route path="/detail/:pokemonName" component={PokemonDetailContainer} />
             </div>
           </Router> 
           </Col>
