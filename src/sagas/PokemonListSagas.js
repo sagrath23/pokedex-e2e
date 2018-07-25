@@ -4,10 +4,11 @@ import { listPokemons } from '../services';
 import actionTypes from '../constants';
 
 export function* loadNewPokemonList(action) {
-    const newPokemonList = yield call(listPokemons, action.payload.urltoLoad);
-    yield console.log(newPokemonList, 'ohhhhhhhhh yeah!!!');
-    yield delay(1000)
-    yield put({ type: actionTypes.listActiontype, payload:  })
+    yield console.log(action, 'saga action');
+    const requestResult = yield call(listPokemons, action.payload.urlToLoad);
+    yield put({ type: actionTypes.listActiontype, payload: {
+        newPokemonList: requestResult.body
+    } })
 }
 
 // Our watcher Saga: spawn a new loadNewPokemonList task on each INCREMENT_ASYNC
