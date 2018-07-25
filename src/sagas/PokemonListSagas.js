@@ -7,7 +7,7 @@ export function* loadNewPokemonList(action) {
     const newPokemonList = yield call(listPokemons, action.payload.urltoLoad);
     yield console.log(newPokemonList, 'ohhhhhhhhh yeah!!!');
     yield delay(1000)
-    yield put({ type: actionTypes.listActiontype })
+    yield put({ type: actionTypes.listActiontype, payload:  })
 }
 
 // Our watcher Saga: spawn a new loadNewPokemonList task on each INCREMENT_ASYNC
