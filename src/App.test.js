@@ -41,10 +41,15 @@ describe('list page', () => {
 
   it('after click 5 times next button, the last pokemon listed is staryu', async() => {
     await page.click('div.btn-group > button:nth-child(2)');
+    await page.waitFor(1000);
     await page.click('div.btn-group > button:nth-child(2)');
+    await page.waitFor(1000);
     await page.click('div.btn-group > button:nth-child(2)');
+    await page.waitFor(1000);
     await page.click('div.btn-group > button:nth-child(2)');
+    await page.waitFor(1000);
     await page.click('div.btn-group > button:nth-child(2)');
+    await page.waitFor(1000);
 
     const html = await page.$eval('.list-group-item:last-child > a', e => e.innerHTML);
     expect(html).toBe('staryu');
@@ -52,6 +57,7 @@ describe('list page', () => {
 
   it('go to detailed info about pikachu', async() => {
     await page.click('div.btn-group > button:nth-child(2)');
+    await page.waitFor(1000);
     await page.click('.list-group-item:nth-child(5) > a');
     await page.waitForSelector('div.card');
 
