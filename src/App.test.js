@@ -1,5 +1,4 @@
 import puppeteer from 'puppeteer';
-// const puppeteer = require('puppeteer')
 
 const isDebugging = () => {
   const debugging_mode = {
@@ -7,7 +6,7 @@ const isDebugging = () => {
     slowMo: 250,
     devtools: true,
   }
-  return process.env.NODE_ENV === 'debug' ? debugging_mode : {}
+  return process.env.NODE_ENV === 'test' ? debugging_mode : {}
 }
 
 describe('list page', () => {
@@ -31,5 +30,5 @@ describe('list page', () => {
     const html = await page.$eval('.list-group-item:nth-child(1) > a', e => e.innerHTML);
     expect(html).toBe('bulbasaur');
     browser.close();
-  }, 16000)
+  }, 16000);
 })

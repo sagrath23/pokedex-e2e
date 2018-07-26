@@ -58,7 +58,8 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
-    "test:e2e": "jest"
+    "test:e2e": "jest",
+    "debug": "NODE_ENV=test npm run test:e2e"
   },
   "devDependencies": {
     "jest": "^23.4.1",
