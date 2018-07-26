@@ -11,18 +11,23 @@ const isDebugging = () => {
 }
 
 describe('list page', () => {
-  test('in first page, first pokemon is bulbasaur', async() => {
-    let browser = await puppeteer.launch({});
-    let page = await browser.newPage();
-    
-    page.emulate({
-      viewport: {
-        width: 500,
-        height: 2400,
-      },
-      userAgent: ''
-    });
+  let browser
+  let page
+  
+  beforeAll(async () => { 
+    browser = await puppeteer.launch(isDebugging());
+    page = await browser.newPage();
     await page.goto('http://localhost:3000/');
+    page.setViewport({ width: 500, height: 2400 });
+  });
+
+  afterAll(() => {     
+    if (isDebugging()) {         
+      browser.close();    
+    } 
+  });
+
+  test('in first page, first pokemon is bulbasaur', async() => {
     const html = await page.$eval('.list-group-item:nth-child(1) > a', e => e.innerHTML);
     expect(html).toBe('bulbasaur');
     browser.close();
