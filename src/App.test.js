@@ -1,43 +1,30 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import { puppeteer } from 'puppeteer';
+import puppeteer from 'puppeteer';
+// const puppeteer = require('puppeteer')
 
-const puppeteer = require('puppeteer');
+const isDebugging = () => {
+  const debugging_mode = {
+    headless: false,
+    slowMo: 250,
+    devtools: true,
+  }
+  return process.env.NODE_ENV === 'debug' ? debugging_mode : {}
+}
 
-describe('App tests', () => {
-  describe('unit tests', () => {
-    it('renders without crashing', () => {
-      const div = document.createElement('div');
-      ReactDOM.render(<App />, div);
-      ReactDOM.unmountComponentAtNode(div);
-    });
-  });
-  
-  describe('e2e tests', () => {
-    it('h1 loads correctly', async () => {
-    let browser = await puppeteer.launch({
-      headless: false
-    });
+describe('list page', () => {
+  test('in first page, first pokemon is bulbasaur', async() => {
+    let browser = await puppeteer.launch({});
     let page = await browser.newPage();
-  
+    
     page.emulate({
       viewport: {
-      width: 500,
-      height: 2400
+        width: 500,
+        height: 2400,
       },
       userAgent: ''
     });
-  
-    await page.goto('http://localhost:3002/');
-    await page.waitForSelector('.App-title');
-  
-    const html = await page.$eval('.App-title', e => e.innerHTML);
-    expect(html).toBe('Welcome to React');
-  
+    await page.goto('http://localhost:3000/');
+    const html = await page.$eval('.list-group-item:nth-child(1) > a', e => e.innerHTML);
+    expect(html).toBe('bulbasaur');
     browser.close();
-    }, 16000);
-  });
-});
-
-
+  }, 16000)
+})
