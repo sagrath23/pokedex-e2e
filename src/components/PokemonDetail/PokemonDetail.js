@@ -19,22 +19,25 @@ class PokemonDetail extends Component {
 
     render(){
         const { detailedPokemon } = this.props;
-
-        return(
-            <Card>
-                <CardImg top width="100%" src={detailedPokemon.sprites.front_default} alt="Pokemon Sprite" />
-                <CardBody>
-                    <CardTitle>{detailedPokemon.name}</CardTitle>
-                    <CardSubtitle>Pokemon ID: {detailedPokemon.id}</CardSubtitle>
-                    <ListGroup>
-                        {detailedPokemon.types.map((pokemonSlot, index) => (<ListGroupItem key={index}>{pokemonSlot.type.name}</ListGroupItem>))}
-                    </ListGroup>
-                    <Link to="/">
-                        <Button>Back to list</Button>
-                    </Link>
-                </CardBody>
-            </Card>
-        );
+        if(detailedPokemon) {
+            return(
+                <Card>
+                    <CardImg top width="100%" src={detailedPokemon.sprites.front_default} alt="Pokemon Sprite" />
+                    <CardBody>
+                        <CardTitle>{detailedPokemon.name}</CardTitle>
+                        <CardSubtitle>Pokemon ID: {detailedPokemon.id}</CardSubtitle>
+                        <ListGroup>
+                            {detailedPokemon.types.map((pokemonSlot, index) => (<ListGroupItem key={index}>{pokemonSlot.type.name}</ListGroupItem>))}
+                        </ListGroup>
+                        <Link to="/">
+                            <Button>Back to list</Button>
+                        </Link>
+                    </CardBody>
+                </Card>
+            );
+        } else {
+            return null;
+        }
     }
 }
 

@@ -1,43 +1,68 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import { puppeteer } from 'puppeteer';
+import puppeteer from 'puppeteer';
 
-const puppeteer = require('puppeteer');
+const isDebugging = () => {
+  const debugging_mode = {
+    headless: false,
+    slowMo: 250,
+    devtools: true,
+  }
+  return process.env.NODE_ENV === 'test' ? debugging_mode : {}
+}
 
-describe('App tests', () => {
-  describe('unit tests', () => {
-    it('renders without crashing', () => {
-      const div = document.createElement('div');
-      ReactDOM.render(<App />, div);
-      ReactDOM.unmountComponentAtNode(div);
-    });
+describe('list page', () => {
+  let browser
+  let page
+  
+  beforeEach(async () => { 
+    browser = await puppeteer.launch(isDebugging());
+    page = await browser.newPage();
+    await page.goto('http://localhost:3000/');
+    page.setViewport({ width: 500, height: 2400 });
   });
-  
-  describe('e2e tests', () => {
-    it('h1 loads correctly', async () => {
-    let browser = await puppeteer.launch({
-      headless: false
-    });
-    let page = await browser.newPage();
-  
-    page.emulate({
-      viewport: {
-      width: 500,
-      height: 2400
-      },
-      userAgent: ''
-    });
-  
-    await page.goto('http://localhost:3002/');
-    await page.waitForSelector('.App-title');
-  
-    const html = await page.$eval('.App-title', e => e.innerHTML);
-    expect(html).toBe('Welcome to React');
-  
-    browser.close();
-    }, 16000);
+
+  afterEach(() => {     
+    if (isDebugging()) {         
+      browser.close();    
+    } 
   });
-});
 
+  it('in first page, first pokemon is bulbasaur', async() => {
+    const html = await page.$eval('.list-group-item:nth-child(1) > a', e => e.innerHTML);
+    expect(html).toBe('bulbasaur');
+  }, 16000);
 
+  it('create an screenshot of bulbasaur detail', async() => {
+    const html = await page.$eval('.list-group-item:nth-child(1) > a', e => e.innerHTML);
+    await page.click('.list-group-item:nth-child(1) > a');
+    await page.waitForSelector('div.card');
+    await page.screenshot({path: 'screenshot.png'});
+    expect(html).toBe('bulbasaur');
+  }, 16000);
+
+  it('after click 5 times next button, the last pokemon listed is staryu', async() => {
+    await page.click('div.btn-group > button:nth-child(2)');
+    await page.waitFor(1000);
+    await page.click('div.btn-group > button:nth-child(2)');
+    await page.waitFor(1000);
+    await page.click('div.btn-group > button:nth-child(2)');
+    await page.waitFor(1000);
+    await page.click('div.btn-group > button:nth-child(2)');
+    await page.waitFor(1000);
+    await page.click('div.btn-group > button:nth-child(2)');
+    await page.waitFor(1000);
+
+    const html = await page.$eval('.list-group-item:last-child > a', e => e.innerHTML);
+    expect(html).toBe('staryu');
+  }, 16000);
+
+  it('go to detailed info about pikachu', async() => {
+    await page.click('div.btn-group > button:nth-child(2)');
+    await page.waitFor(1000);
+    await page.click('.list-group-item:nth-child(5) > a');
+    await page.waitForSelector('div.card');
+
+    const html = await page.$eval('div.card-body > h6', e => e.innerHTML);
+    expect(html).toBe('Pokemon ID: 25');
+  }, 16000);
+
+})
