@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import logo from './logo.svg';
+
 import './App.css';
 import { NavigationBar } from './components/NavigationBar';
 import { PokemonDetailContainer } from './components/PokemonDetail';

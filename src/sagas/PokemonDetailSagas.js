@@ -1,4 +1,3 @@
-import { delay } from 'redux-saga'
 import { put, takeEvery, call } from 'redux-saga/effects';
 import { getPokemon} from '../services';
 import actionTypes from '../constants';

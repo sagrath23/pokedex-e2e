@@ -3,15 +3,12 @@ import { initialState } from './initialState';
 
 const pokedexReducer = (currentState = initialState, action) => {
     switch(action.type){
-        case actionTypes.listActiontype: {
-            return Object.assign({}, currentState, {currentPokemonList: action.payload.newPokemonList})
-        }break;
-        case actionTypes.detailActionType: {
-            return Object.assign({}, currentState, {detailedPokemon: action.payload.detailedPokemon})
-        }break;
-        default: {
+        case actionTypes.listActiontype: 
+            return Object.assign({}, currentState, {currentPokemonList: action.payload.newPokemonList});
+        case actionTypes.detailActionType: 
+            return Object.assign({}, currentState, {detailedPokemon: action.payload.detailedPokemon});
+        default: 
             return currentState;
-        }break;
     }
 };
 

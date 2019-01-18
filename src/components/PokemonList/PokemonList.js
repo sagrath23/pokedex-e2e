@@ -16,17 +16,13 @@ const PokemonList = ({ currentPokemonList, loadListAction }) => {
         <ButtonGroup>
             <Button
                 disabled={!currentPokemonList.previous}
-                onClick={() => {
-                    currentPokemonList.previous ? loadListAction(currentPokemonList.previous) : null
-                }}
+                onClick={() => (currentPokemonList.previous ? loadListAction(currentPokemonList.previous) : null)}
             >
                 Previous
             </Button>
             <Button
                 disabled={!currentPokemonList.next}
-                onClick={() => {
-                    currentPokemonList.next ? loadListAction(currentPokemonList.next) : null
-                }}
+                onClick={() => (currentPokemonList.next ? loadListAction(currentPokemonList.next) : null)}
             >
                 Next
             </Button>
