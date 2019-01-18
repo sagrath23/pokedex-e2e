@@ -4,7 +4,7 @@ const isDebugging = () => {
   const debugging_mode = {
     headless: false,
     slowMo: 250,
-    devtools: true,
+    devtools: false,
   }
   return process.env.NODE_ENV === 'test' ? debugging_mode : {}
 }

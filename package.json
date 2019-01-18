@@ -68,7 +68,8 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
-    "test:e2e": "jest"
+    "test:e2e": "jest",
+    "debug": "NODE_ENV=test npm run test:e2e"
   },
   "browserslist": [
     ">0.2%",
@@ -124,5 +125,8 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "devDependencies": {
+    "puppeteer": "^1.11.0"
   }
 }
